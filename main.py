@@ -1,6 +1,7 @@
-import pygame, sys, time
+import pygame, sys, time, math
 from obstacle import Obstacle
 from robot import Robot
+from algorithm import *
 
 def drawObstacles(obslist):
     for obs in obslist:
@@ -38,6 +39,9 @@ if __name__ == "__main__":
     surface.blit(robo.image, robo.imageposition)
 
     pygame.display.flip()
+
+    #Algorithm WIP
+    exhaustiveSearch(obslist)
     
     while True:
         for event in pygame.event.get():
