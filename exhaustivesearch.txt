@@ -1,0 +1,5 @@
+1. Find all possible permutation of path travelling
+https://www.geeksforgeeks.org/write-a-c-program-to-print-all-permutations-of-a-given-string/
+
+2. Brute force use exhaustive searching to find shortest path
+https://www.baeldung.com/cs/shortest-path-visiting-all-nodes
