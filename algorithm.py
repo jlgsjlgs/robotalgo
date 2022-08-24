@@ -69,6 +69,7 @@ def exhaustiveSearch(obslist):
     print("Lowest cost found = {}, with path as {}".format(lowestcost,lowestcostpath))
 
 # def astarsearch(obslist):
+    # exhaustiveSearch(obslist)
 
 
         
