@@ -1,4 +1,5 @@
 from obstacle import Obstacle
+from node import Node
 import sys
 
 def generatePermutations(numNodes):
@@ -67,9 +68,51 @@ def exhaustiveSearch(obslist):
     
     print(g)
     print("Lowest cost found = {}, with path as {}".format(lowestcost,lowestcostpath))
+    return lowestcostpath
 
 # def astarsearch(obslist):
-    # exhaustiveSearch(obslist)
+#     path = exhaustiveSearch(obslist)
+#     firstObs = True
+#     robotpathing = []
+
+#     for goals in path:
+#         if firstObs == True:
+#             firstObs = False
+#             source = Node(20,340,None,obslist[int(path[0])-1])
+#         # else:
+#         #     source = 
+
+#         openlist = []
+#         closedlist = []
+#         openlist.append(source)
+
+#         while len(openlist)!=0:
+#             #Find node with least F(n) on open list -> This node will be our next traversal
+#             nextnode = openlist[0]
+#             for temp in openlist:
+#                 if temp.fn < nextnode.fn:
+#                     nextnode = temp
+            
+#             #Pop nextnode off the open list
+#             openlist.remove(nextnode)
+
+#             #Generate next 4 successor nodes and set their parents to nextnode
+#             findSuccessors(nextnode)
+    
+#         print(source.x, source.y, source.parent, source.gn, source.hn, source.fn)
+
+# def findSuccessors():
+#     successors = []
+
+
+
+    
+
+    
+
+
+
+
 
 
         

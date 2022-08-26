@@ -41,7 +41,8 @@ if __name__ == "__main__":
     pygame.display.flip()
 
     #Algorithm WIP
-    exhaustiveSearch(obslist)
+    astarsearch(obslist)
+    # exhaustiveSearch(obslist)
     
     while True:
         for event in pygame.event.get():
