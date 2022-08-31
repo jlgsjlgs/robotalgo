@@ -178,23 +178,3 @@ def obstacleAvoidance(x, y, obslist): # Checks for a given node, if the center o
                 return False
     return True
     
-
-
-    
-
-    
-
-
-
-
-
-
-        
-
-
-                
-
-
-    
-    
-    

@@ -79,8 +79,3 @@ if __name__ == "__main__":
                 surface.blit(robo.image, robo.imageposition)
                 pygame.display.flip()
                 print("Robot currently at ", robo.x, robo.y)
-        
-
-
-
-
