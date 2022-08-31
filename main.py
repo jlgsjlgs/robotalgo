@@ -41,13 +41,46 @@ if __name__ == "__main__":
     pygame.display.flip()
 
     #Algorithm WIP
-    astarsearch(obslist)
     # exhaustiveSearch(obslist)
+    paths = astarsearch(obslist)
+    nextmove = 0
+    currentobs = 0
+
+    # These 2 variable just to check if animation is correct
+    atGoal = False
+    obscounter = 0
     
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
+
+            if event.type == pygame.KEYDOWN:
+                if nextmove <= len(paths[currentobs])-2:
+                    nextmove+=1
+                    if nextmove > len(paths[currentobs])-2:
+                        atGoal = True
+                else:
+                    nextmove=0
+                    currentobs+=1
+
+                
+                robo.updateposition(paths[currentobs][nextmove].x, paths[currentobs][nextmove].y)
+
+                if atGoal == True:
+                    atGoal = False
+                    robo.checkDirection(obslist[obscounter].goaldirection)
+                    obscounter+=1
+            
+                surface.fill((255,255,255)) #Set background to white
+                drawObstacles(obslist)
+                drawGrid() #Instantiate grid lines for visual aid
+                surface.blit(robo.image, robo.imageposition)
+                pygame.display.flip()
+                print("Robot currently at ", robo.x, robo.y)
+        
+
+
 
 
