@@ -71,6 +71,7 @@ if __name__ == "__main__":
                 if atGoal == True:
                     atGoal = False
                     robo.checkDirection(obslist[obscounter].goaldirection)
+                    obslist[obscounter].scanned()
                     obscounter+=1
             
                 surface.fill((255,255,255)) #Set background to white
