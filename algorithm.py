@@ -74,8 +74,7 @@ def exhaustiveSearch(obslist): # Function that performs exhaustive search and re
 
 # Task 2 - Astar search algorithm that our robot will use to traverse the maze 
 
-def astarsearch(obslist):
-    path = exhaustiveSearch(obslist)
+def astarsearch(obslist, path):
     firstObs = True
     nextsource = None
     robotpathing = []

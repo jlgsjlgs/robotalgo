@@ -26,12 +26,60 @@ if __name__ == "__main__":
     surface = pygame.display.set_mode((400,400))
     surface.fill((255,255,255)) #Set background to white
     
-    obs1 = Obstacle(20,200,"S") #Instantiate objects in our simulator
+    #Instantiate objects in our simulator
+
+    # Base case
+    # obs1 = Obstacle(20,200,"S") 
+    # obs2 = Obstacle(100,100,"S") 
+    # obs3 = Obstacle(260,40,"W")
+    # obs4 = Obstacle(240,200,"E")
+    # obs5 = Obstacle(320,320,"W")
+    # obslist = [obs1,obs2,obs3,obs4,obs5]
+
+    # Test case 2
+    # obs1 = Obstacle(20,200,"S") 
+    # obs2 = Obstacle(100,100,"S") 
+    # obs3 = Obstacle(260,40,"W")
+    # obs4 = Obstacle(240,200,"W")
+    # obs5 = Obstacle(280,200,"E")
+    # obs6 = Obstacle(320,320,"W")
+    # obslist = [obs1,obs2,obs3,obs4,obs5,obs6]
+
+    # Test case 3
+    # obs1 = Obstacle(20,200,"S") 
+    # obs2 = Obstacle(100,100,"S") 
+    # obs3 = Obstacle(260,40,"W")
+    # obs4 = Obstacle(240,200,"E")
+    # obs5 = Obstacle(340,160,"W")
+    # obs6 = Obstacle(320,320,"W")
+    # obslist = [obs1,obs2,obs3,obs4,obs5,obs6]
+
+    # Test case 4
+    # obs1 = Obstacle(20,200,"S") 
+    # obs2 = Obstacle(100,100,"S") 
+    # obs3 = Obstacle(260,40,"W")
+    # obs4 = Obstacle(240,200,"E")
+    # obs5 = Obstacle(320,320,"W")
+    # obs6 = Obstacle(340,0,"S")
+    # obslist = [obs1,obs2,obs3,obs4,obs5,obs6]
+
+    # Test case 5
+    # obs1 = Obstacle(20,200,"S") 
+    # obs2 = Obstacle(100,100,"S") 
+    # obs3 = Obstacle(260,40,"W")
+    # obs4 = Obstacle(240,200,"E")
+    # obs5 = Obstacle(340,0,"S")
+    # obslist = [obs1,obs2,obs3,obs4,obs5]
+
+    # Test case 6
+    obs1 = Obstacle(20,200,"S") 
     obs2 = Obstacle(100,100,"S") 
     obs3 = Obstacle(260,40,"W")
     obs4 = Obstacle(240,200,"E")
     obs5 = Obstacle(320,320,"W")
-    obslist = [obs1,obs2,obs3,obs4,obs5]
+    obs6 = Obstacle(100,300,"W")
+    obslist = [obs1,obs2,obs3,obs4,obs5,obs6]
+
     drawObstacles(obslist)
     drawGrid() #Instantiate grid lines for visual aid
 
@@ -40,11 +88,18 @@ if __name__ == "__main__":
 
     pygame.display.flip()
 
-    #Algorithm WIP
-    # exhaustiveSearch(obslist)
-    paths = astarsearch(obslist)
+    #Algorithm
+    visitingorder = exhaustiveSearch(obslist)
+    paths = astarsearch(obslist, visitingorder)
     nextmove = 0
     currentobs = 0
+
+    # For debugging purposes
+    # for routes in paths:
+    #     print("NEW OBSTACLE")
+    #     for nodes in routes:
+    #         print(nodes.x, nodes.y)
+    #     print("OBSTACLE FOUND")
 
     # These 2 variable just to check if animation is correct
     atGoal = False
@@ -70,8 +125,8 @@ if __name__ == "__main__":
 
                 if atGoal == True:
                     atGoal = False
-                    robo.checkDirection(obslist[obscounter].goaldirection)
-                    obslist[obscounter].scanned()
+                    robo.checkDirection(obslist[int(visitingorder[currentobs])-1].goaldirection)
+                    obslist[int(visitingorder[currentobs])-1].scanned()
                     obscounter+=1
             
                 surface.fill((255,255,255)) #Set background to white
