@@ -105,13 +105,17 @@ if __name__ == "__main__":
     atGoal = False
     obscounter = 0
     
+    start = time.time()
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
+            
+            while True:
+                if currentobs == len(paths)-1 and nextmove > len(paths[currentobs])-2:
+                    break
 
-            if event.type == pygame.KEYDOWN:
                 if nextmove <= len(paths[currentobs])-2:
                     nextmove+=1
                     if nextmove > len(paths[currentobs])-2:
@@ -128,10 +132,18 @@ if __name__ == "__main__":
                     robo.checkDirection(obslist[int(visitingorder[currentobs])-1].goaldirection)
                     obslist[int(visitingorder[currentobs])-1].scanned()
                     obscounter+=1
-            
+
                 surface.fill((255,255,255)) #Set background to white
                 drawObstacles(obslist)
                 drawGrid() #Instantiate grid lines for visual aid
                 surface.blit(robo.image, robo.imageposition)
                 pygame.display.flip()
-                print("Robot currently at ", robo.x, robo.y)
+                print("Robot currently at ", robo.x, robo.y, round(robo.direction,2))
+                pygame.time.wait(500)
+        
+            break
+        break
+
+    end = time.time()
+    print(end-start, " seconds for simulator to execute")
+    print("Program done")
