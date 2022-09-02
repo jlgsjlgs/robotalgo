@@ -55,13 +55,13 @@ if __name__ == "__main__":
     # obslist = [obs1,obs2,obs3,obs4,obs5,obs6]
 
     # Test case 4
-    # obs1 = Obstacle(20,200,"S") 
-    # obs2 = Obstacle(100,100,"S") 
-    # obs3 = Obstacle(260,40,"W")
-    # obs4 = Obstacle(240,200,"E")
-    # obs5 = Obstacle(320,320,"W")
-    # obs6 = Obstacle(340,0,"S")
-    # obslist = [obs1,obs2,obs3,obs4,obs5,obs6]
+    obs1 = Obstacle(20,200,"S") 
+    obs2 = Obstacle(100,100,"S") 
+    obs3 = Obstacle(260,40,"W")
+    obs4 = Obstacle(240,200,"E")
+    obs5 = Obstacle(320,320,"W")
+    obs6 = Obstacle(340,0,"S")
+    obslist = [obs1,obs2,obs3,obs4,obs5,obs6]
 
     # Test case 5
     # obs1 = Obstacle(20,200,"S") 
@@ -72,13 +72,13 @@ if __name__ == "__main__":
     # obslist = [obs1,obs2,obs3,obs4,obs5]
 
     # Test case 6
-    obs1 = Obstacle(20,200,"S") 
-    obs2 = Obstacle(100,100,"S") 
-    obs3 = Obstacle(260,40,"W")
-    obs4 = Obstacle(240,200,"E")
-    obs5 = Obstacle(320,320,"W")
-    obs6 = Obstacle(100,300,"W")
-    obslist = [obs1,obs2,obs3,obs4,obs5,obs6]
+    # obs1 = Obstacle(20,200,"S") 
+    # obs2 = Obstacle(100,100,"S") 
+    # obs3 = Obstacle(260,40,"W")
+    # obs4 = Obstacle(240,200,"E")
+    # obs5 = Obstacle(320,320,"W")
+    # obs6 = Obstacle(100,300,"W")
+    # obslist = [obs1,obs2,obs3,obs4,obs5,obs6]
 
     drawObstacles(obslist)
     drawGrid() #Instantiate grid lines for visual aid
@@ -132,6 +132,7 @@ if __name__ == "__main__":
                     robo.checkDirection(obslist[int(visitingorder[currentobs])-1].goaldirection)
                     obslist[int(visitingorder[currentobs])-1].scanned()
                     obscounter+=1
+                    print("Obstacle scanned and cleared! ", obslist[int(visitingorder[currentobs])-1].x, obslist[int(visitingorder[currentobs])-1].y, obslist[int(visitingorder[currentobs])-1].direction)
 
                 surface.fill((255,255,255)) #Set background to white
                 drawObstacles(obslist)
