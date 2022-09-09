@@ -28,15 +28,7 @@ if __name__ == "__main__":
     
     #Instantiate objects in our simulator
 
-    # Base case
-    # obs1 = Obstacle(20,200,"S") 
-    # obs2 = Obstacle(100,100,"S") 
-    # obs3 = Obstacle(260,40,"W")
-    # obs4 = Obstacle(240,200,"E")
-    # obs5 = Obstacle(320,320,"W")
-    # obslist = [obs1,obs2,obs3,obs4,obs5]
-
-    # Test case 2
+    # Showcase 1
     # obs1 = Obstacle(20,200,"S") 
     # obs2 = Obstacle(100,100,"S") 
     # obs3 = Obstacle(260,40,"W")
@@ -45,7 +37,7 @@ if __name__ == "__main__":
     # obs6 = Obstacle(320,320,"W")
     # obslist = [obs1,obs2,obs3,obs4,obs5,obs6]
 
-    # Test case 3
+    # Showcase 2
     # obs1 = Obstacle(20,200,"S") 
     # obs2 = Obstacle(100,100,"S") 
     # obs3 = Obstacle(260,40,"W")
@@ -54,7 +46,7 @@ if __name__ == "__main__":
     # obs6 = Obstacle(320,320,"W")
     # obslist = [obs1,obs2,obs3,obs4,obs5,obs6]
 
-    # Test case 4
+    # Showcase 3
     obs1 = Obstacle(20,200,"S") 
     obs2 = Obstacle(100,100,"S") 
     obs3 = Obstacle(260,40,"W")
@@ -62,23 +54,6 @@ if __name__ == "__main__":
     obs5 = Obstacle(320,320,"W")
     obs6 = Obstacle(340,0,"S")
     obslist = [obs1,obs2,obs3,obs4,obs5,obs6]
-
-    # Test case 5
-    # obs1 = Obstacle(20,200,"S") 
-    # obs2 = Obstacle(100,100,"S") 
-    # obs3 = Obstacle(260,40,"W")
-    # obs4 = Obstacle(240,200,"E")
-    # obs5 = Obstacle(340,0,"S")
-    # obslist = [obs1,obs2,obs3,obs4,obs5]
-
-    # Test case 6
-    # obs1 = Obstacle(20,200,"S") 
-    # obs2 = Obstacle(100,100,"S") 
-    # obs3 = Obstacle(260,40,"W")
-    # obs4 = Obstacle(240,200,"E")
-    # obs5 = Obstacle(320,320,"W")
-    # obs6 = Obstacle(100,300,"W")
-    # obslist = [obs1,obs2,obs3,obs4,obs5,obs6]
 
     drawObstacles(obslist)
     drawGrid() #Instantiate grid lines for visual aid
@@ -106,6 +81,8 @@ if __name__ == "__main__":
     obscounter = 0
     
     start = time.time()
+    timelimit = 15
+
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -113,6 +90,11 @@ if __name__ == "__main__":
                 sys.exit()
             
             while True:
+                if time.time() - start > timelimit:
+                    print("Time limit of {} seconds has been exceeded! Program will now stop running".format(timelimit))
+                    while True:
+                        continue
+
                 if currentobs == len(paths)-1 and nextmove > len(paths[currentobs])-2:
                     break
 
